@@ -63,6 +63,6 @@ services:
       - redis-slave-1
       - redis-slave-2
     ports:
-      - '26370-26372:26370'
+      - '26390-26392:26390'
     networks:
       - app-tier

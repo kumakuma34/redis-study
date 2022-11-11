@@ -1,5 +1,6 @@
 package com.example.redistest.controller;
 
+import com.example.redistest.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -15,6 +16,8 @@ public class RedisController {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
+    @Autowired
+    private RedisService redisService;
     @PostMapping("/redisTest")
     public ResponseEntity<?> addRedisKey() {
         ValueOperations<String, String> vop = redisTemplate.opsForValue();
@@ -34,6 +37,7 @@ public class RedisController {
 
     @GetMapping("/test")
     public String test(){
+        redisService.redisTask();
         return "success";
     }
 
